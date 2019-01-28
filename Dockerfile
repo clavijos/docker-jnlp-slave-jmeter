@@ -28,6 +28,7 @@ USER root
 RUN apt-get update && apt-get install -y wget
 RUN wget http://apache.mirror.anlx.net//jmeter/binaries/apache-jmeter-5.0.tgz
 RUN tar xf apache-jmeter-5.0.tgz
+RUN chown -R jenkins ./apache-jmeter-5.0
 
 USER jenkins
 
