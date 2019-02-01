@@ -24,13 +24,7 @@ FROM jenkins/slave
 MAINTAINER Oleg Nenashev <o.v.nenashev@gmail.com>
 LABEL Description="This is a base image, which allows connecting Jenkins agents via JNLP protocols" Vendor="Jenkins project" Version="3.27"
 
-USER root
-RUN apt-get update && apt-get install -y wget
-RUN wget http://apache.mirror.anlx.net//jmeter/binaries/apache-jmeter-5.0.tgz
-RUN tar xf apache-jmeter-5.0.tgz
-RUN rm apache-jmeter-5.0.tgz
-RUN chown -R jenkins ./apache-jmeter-5.0
-USER jenkins
+COPY apache-jmeter-5.0 /home/jenkins/apache-jmeter-5.0
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 
